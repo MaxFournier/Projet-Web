@@ -25,7 +25,7 @@ Class EpisodeModel extends BDD{
     }
 
     function getEpisodeById($id){
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id=?");
+        $stmt = $pdo->prepare("SELECT * FROM episodes WHERE id=?");
         $stmt->execute([$id]); 
         $row = $stmt->fetch();
 
@@ -53,7 +53,7 @@ Class EpisodeModel extends BDD{
     }
 
     function isEpisodeOfSerie ($idEpisode, $idSerie){
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id_serie=?");
+        $stmt = $pdo->prepare("SELECT * FROM episodes WHERE id_serie=?");
         $stmt->execute([$idSerie]); 
         $row = $stmt->fetchAll();
 
@@ -66,7 +66,7 @@ Class EpisodeModel extends BDD{
     }
 
     function getEpisodesBySerieId ($idSerie){
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id_serie=?");
+        $stmt = $pdo->prepare("SELECT * FROM episodes WHERE id_serie=?");
         $stmt->execute([$idSerie]); 
         $row = $stmt->fetchAll();
 
