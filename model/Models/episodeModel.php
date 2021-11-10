@@ -1,5 +1,5 @@
 <?php
-Class EpisodeModel{
+Class EpisodeModel extends BDD{
     function __construct($db) {
         try {
             $this->pdo = $db;
@@ -63,5 +63,13 @@ Class EpisodeModel{
             }
             return false;
         }
+    }
+
+    function getEpisodesBySerieId ($idSerie){
+        $stmt = $pdo->prepare("SELECT * FROM users WHERE id_serie=?");
+        $stmt->execute([$idSerie]); 
+        $row = $stmt->fetchAll();
+
+        return $row;
     }
 }

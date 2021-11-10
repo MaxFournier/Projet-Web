@@ -1,5 +1,5 @@
 <?php
-Class UserModel{
+Class UserModel extends BDD{
     function __construct($db) {
         try {
             $this->pdo = $db;

@@ -1,5 +1,5 @@
 <?php
-Class SerieModel{
+Class SerieModel extends BDD{
     function __construct($db) {
         try {
             $this->pdo = $db;
@@ -23,11 +23,20 @@ Class SerieModel{
     }
 
     function getSerieById($id){
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id=?");
+        $stmt = $pdo->prepare("SELECT * FROM series WHERE id=?");
         $stmt->execute([$id]); 
         $row = $stmt->fetch();
 
         return $row;
+    }
+
+    //get 3 serie pour page d'accueil
+    function get3Series($id){
+        $stmt = $pdo->prepare("SELECT * FROM series LIMIT 3");
+        $stmt->execute([$id]); 
+        $rows = $stmt->fetchAll();
+
+        return $rows;
     }
 
     function updateSerie($id, $titre, $description, $nbSaison){
@@ -46,4 +55,6 @@ Class SerieModel{
         $stmt= $pdo->prepare($sql);
         $stmt->execute([$id]);
     }
+
+    //ajouter get affiche par api 
 }

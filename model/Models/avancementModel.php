@@ -15,7 +15,7 @@ class AvancementModel extends BDD
     }
 
     function getAvancementById ($idUser, $idSerie){
-        $stmt = $pdo->prepare("SELECT * FROM users WHERE id_serie = ? and id_user = ?");
+        $stmt = $pdo->prepare("SELECT * FROM avancement WHERE id_serie = ? and id_user = ?");
         $stmt->execute([$idSerie,$idUser]); 
         $row = $stmt->fetch();
 
@@ -23,10 +23,23 @@ class AvancementModel extends BDD
     }
 
     function deleteAvancement($idUser, $idSerie){
-        $sql = "DELETE FROM episodes WHERE id_serie = ? and id_user = ?";
+        $sql = "DELETE FROM avancement WHERE id_serie = ? and id_user = ?";
         $stmt= $pdo->prepare($sql);
         $stmt->execute([$idSerie,$idUser]);
     }
 
     //ajouter fonction "ajouter au favoris
+
+    function updateSerieFavoris ($idUser, $idSerie, $favoris){
+        if($favoris!=0  && $favoris!=1 ){
+            //erreur
+        }
+        else{
+            $stmt = $pdo->prepare("UPDATE avancement SET favoris = ? 
+            WHERE id_serie=? and id_user =?");
+            $stmt->execute([$favoris,$idSerie,$idUser]); 
+            
+        }
+    }
+
 }
