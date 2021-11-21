@@ -1,37 +1,20 @@
-<?php
-	class BDD
-{
-    // déclaration d'une propriété
-    private $bdd ;
-	private $pdo;
+<?php 
+class BDD{
+    
+    
+    private static function connect() {
+        // connexion sqlite voir variable dans config.php
+        $pdo = new PDO("DB_TYPE:DB_NAME");
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        return $pdo;
+    } 
 
-
-    public function __construct()
-    {
-		createDatabaseConnection();
-    }
-
-
-    function __destruct() {
-        closeDatabaseConnection();
-    }
-
-	function createDatabaseConnection(){
-		try {
-            $this->pdo = new PDO("DB_TYPE:DB_NAME");
-        } catch (PDOException $e) {
-            exit('Database connection could not be established.');
+    public static function query($query, $params = array()){
+        $statement = self::connect()->prepare($query);
+        $statement->execute($params);
+        if(explode(' ','query')[0] == 'SELECT'){
+            $data = $statement->fetchAll();
+            return $data;
         }
-	}
-
-	function closeDatabaseConnection(){
-		$this->pdo = null;
-	}
-
-
-   
-	
-  
+    }
 }
-
-?>
