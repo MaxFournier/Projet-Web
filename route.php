@@ -1,14 +1,16 @@
 <?php
 
 Route::set('connexion', function(){
-    Connexion::CreateView('connexion');
-    echo '<h1>Connexion</h1>';
+    Connexion::CreateView('Connexion');
+    //echo '<h1>Connexion</h1>';
 });
 
 Route::set('home', function(){
-    Home::CreateView('home');
-    ////Home::test();
-    echo '<h1>Home</h1>';
+    //echo 'Home ROute';
+    Home::CreateView('Accueil');
+    //User::insertUser('testuser','testuser','test@user');
+    //User::userConnection('testuser','testuser');
+    
 });
 
 Route::set('serie', function(){
