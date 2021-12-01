@@ -1,6 +1,6 @@
 <?php 
 
-class Episode extends Controller{
+class Serie extends Controller{
     
     public static function insertSerie ($titre,$description,$nbSaison){
         // clean the input 
@@ -9,13 +9,13 @@ class Episode extends Controller{
         $nbSaison = strip_tags($nbSaison);
 
         $variables = array($titre, $description, $nbSaison);
+        $identifiants = array(":titre",":description",":nbsaison");
 
-        self::query('INSERT INTO "series"(titre, description, nb$nbSaison) 
-        VALUES (?, ?, ?);', $variables);
+        self::query('INSERT INTO "series"(titre, description, nb_saison) 
+        VALUES ( :titre , :description , :nbsaison );', $variables,$identifiants);
     }
 
-    public static function getAllSerie(){
-       
+    public static function getAllSerie (){
         $data = self::query("SELECT * FROM series");
         return $data;
     }
@@ -27,10 +27,13 @@ class Episode extends Controller{
     }
 
     public static function getSerieById($id){
+        $sql = "SELECT * FROM series WHERE id= :id";
+        
+        $variables = array($id);
 
-        $variables = $id;
+        $identifiants = array(":id");
 
-        $data = self::query("SELECT * FROM series WHERE id=?", $variables);
+        $data = self::query($sql, $variables, $identifiants);
 
         return $data;
     }
@@ -41,16 +44,18 @@ class Episode extends Controller{
         $nbSaison = strip_tags($nbSaison);
 
         $variables = array($titre, $description, $nbSaison,$id);
+        $identifiants =array(":titre", ":description", ":nbSaison",":id");
 
-        self::query("UPDATE series SET titre = ?, description = ?, nb_saison = ? WHERE id=?"
-        , $variables);
+        self::query("UPDATE series SET titre = :titre, description = :description, nb_saison = :nbsaison WHERE id= :id"
+        , $variables, $identifiants);
 
     }
 
     public static function deleteSerie($id){
-        $variables = $id;
+        $variables = array($id);
+        $identifiants = array(":id");
 
-        $data = self::query("SELECT * FROM series WHERE id_serie=?", $variables);
+        $data = self::query("DELETE FROM series WHERE id = :id ;", $variables, $identifiants);
     }
 
     //ajouter get affiche par api 

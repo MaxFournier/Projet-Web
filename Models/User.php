@@ -9,12 +9,13 @@ class User extends Controller{
         $email = strip_tags($email);
 
         $variables = array( $username, $password, $email );
-        var_dump($variables);
+        $identifiants = array(":username",":password",":email");
+        //var_dump($variables);
 
         self::query('INSERT INTO "users"(identifiant, password, email) 
-        VALUES (?, ?, ?);', $variables);
+        VALUES ( :username,:password,:email );', $variables,$identifiants);
 
-        echo 'done';
+        //echo 'done';
 
     }
 
@@ -24,8 +25,9 @@ class User extends Controller{
         $password = strip_tags($password);
 
         $variables = array( $username, $password);
+        $identifiants = array(":identifiant",":password");
 
-        $data = self::query("SELECT * FROM users WHERE identifiant=? and password=?", $variables);
+        $data = self::query("SELECT * FROM users WHERE identifiant= :identifiant and password= :password", $variables, $identifiants);
 
         
         if ($data[0] != null && $data[0]['identifiant'] == $username 

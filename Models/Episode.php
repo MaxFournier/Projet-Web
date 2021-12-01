@@ -10,15 +10,17 @@ class Episode extends Controller{
         $idSerie = strip_tags($idSerie);
 
         $variables = array($titre, $description, $saison,$numero,$idSerie);
+        $identifiants = array( ":titre", ":description", ":saison", ":numero", ":idSerie");
 
         self::query("INSERT INTO 'episodes'(titre, description, saison, numero, id_serie) 
-        VALUES (?, ?, ?, ?, ?);", $variables);
+        VALUES ( :titre, :description, :saison, :numero, :idSerie);", $variables,$identifiants);
     }
 
     public static function getEpisodeById($id){
-        $variables = $id;
+        $variables = array($id);
+        $identifiants = array(":id");
 
-        $data = self::query("SELECT * FROM episodes WHERE id=?", $variables);
+        $data = self::query("SELECT * FROM episodes WHERE id= :id", $variables,$identifiants);
 
         return $data;
     }
@@ -32,22 +34,25 @@ class Episode extends Controller{
         $idSerie = strip_tags($idSerie);
 
         $variables = array($titre, $description, $saison ,$numero,$idSerie, $id);
+        $identifiants =array(";titre", ":description", ":saison" ,":numero", ":idSerie", ":id");
         
-        self::query("UPDATE episodes SET titre = ?, description = ?, saison = ?, 
-        numero = ?, id_serie = ? WHERE id=?", $variables);
+        self::query("UPDATE episodes SET titre = :titre, description = :description, saison = :saison, 
+        numero = :numero, id_serie = :idSerie WHERE id= :id", $variables,$identifiants);
     }
 
     public static function deleteEpisode($id){
-        $variables = $id;
+        $variables = array($id);
+        $identifiants = array(":id");
 
-        self::query("DELETE FROM episodes WHERE id=?", $variables);
+        self::query("DELETE FROM episodes WHERE id= :id", $variables,$identifiants);
 
     }
 
     public static function isEpisodeOfSerie ($idEpisode, $idSerie){
-        $variables = array($idEpisode, $idSerie);
+        $variables = array($idSerie);
+        $identifiants = array(":id");
 
-        $data = self::query("SELECT * FROM episodes WHERE id_serie=?", $variables);
+        $data = self::query("SELECT * FROM episodes WHERE id_serie= :id", $variables,$identifiants);
 
         foreach ($data as $element) {
             if($element['id'] == $idEpisode){
@@ -59,9 +64,10 @@ class Episode extends Controller{
 
     public static function getEpisodesBySerieId ($idSerie){
 
-        $variables = $idSerie;
+        $variables = array($idSerie);
+        $identifiants = array(":id");
 
-        $data = self::query("SELECT * FROM episodes WHERE id_serie=?", $variables);
+        $data = self::query("SELECT * FROM episodes WHERE id_serie= :id", $variables ,$identifiants);
 
         return $data;
     }

@@ -8,8 +8,9 @@ class Avancement extends Controller{
 
     public static function getAvancementById ($idSerie, $idUser){
         $variables = array ($idSerie, $idUser);
+        $identifiants = array(":ids",":idu");
 
-        $data = self::query("SELECT * FROM avancement WHERE id_serie = ? and id_user = ?"
+        $data = self::query("SELECT * FROM avancement WHERE id_serie = :ids and id_user = :idu"
         , $variables);
 
         return $data;
@@ -18,8 +19,9 @@ class Avancement extends Controller{
     public static function deleteAvancement($idSerie, $idUser){
 
         $variables = array ($idSerie, $idUser);
+        $identifiants = array(":ids",":idu");
 
-        self::query("DELETE FROM avancement WHERE id_serie = ? and id_user = ?"
+        self::query("DELETE FROM avancement id_serie = :ids and id_user = :idu"
         , $variables);
 
     }
@@ -30,9 +32,10 @@ class Avancement extends Controller{
         }
         else{
             $variables = array ($favoris,$idSerie,$idUser);
+            $identifiants = array(":fav",":ids",":idu");
 
-            self::query("UPDATE avancement SET favoris = ? 
-            WHERE id_serie=? and id_user =?", $variables);
+            self::query("UPDATE avancement SET favoris = :fav 
+            WHERE id_serie = :ids and id_user = :idu", $variables);
 
         }
     }
@@ -42,10 +45,11 @@ class Avancement extends Controller{
             //erreur
         }
         else{
-            $variables = array ($favoris,$idLastEpisode,$idSerie,$idUser);
+            $variables = array ($idLastEpisode,$favoris,$idSerie,$idUser);
+            $identifiants = array(":idlastep",":fav",":ids",":idu");
 
-            self::query("UPDATE avancement SET id_last_episode = ? ,favoris = ? 
-            WHERE id_serie=? and id_user =?", $variables);
+            self::query("UPDATE avancement SET id_last_episode = :idlastep ,favoris = :fav 
+            WHERE id_serie= :ids and id_user =:idu", $variables);
 
         }
     }

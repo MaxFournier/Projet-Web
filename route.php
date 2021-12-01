@@ -9,7 +9,13 @@ Route::set('home', function(){
     //echo 'Home ROute';
     Home::CreateView('Accueil');
     //User::insertUser('testuser','testuser','test@user');
-    //User::userConnection('testuser','testuser');
+    //User::userConnection('admin','admin');
+    //Serie::getAllSerie();
+    //Serie::getSerieById(2);
+    //Serie::insertSerie ("titre","description",2);
+    
+    //Serie::deleteSerie(4);
+    Serie::getAllSerie();
     
 });
 
