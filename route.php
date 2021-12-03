@@ -11,11 +11,11 @@ Route::set('home', function(){
     //User::insertUser('testuser','testuser','test@user');
     //User::userConnection('admin','admin');
     //Serie::getAllSerie();
-    //Serie::getSerieById(2);
+    Serie::getSeriePoster("the Mandalorian");
     //Serie::insertSerie ("titre","description",2);
     
     //Serie::deleteSerie(4);
-    Serie::getAllSerie();
+    //Serie::getAllSerie();
     
 });
 

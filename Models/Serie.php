@@ -59,4 +59,19 @@ class Serie extends Controller{
     }
 
     //ajouter get affiche par api 
+    public static function getSeriePoster($titre){
+        
+        $map_url = ''.API_LINK.''.urlencode($titre);
+        $map_json = file_get_contents($map_url);
+        $image = null;
+
+        if (!empty($map_json)){
+            $map_array = json_decode($map_json, true);
+            if(!empty($map_array[0]['show']['image']['medium'])){
+                $image = $map_array[0]['show']['image']['medium'];
+            }
+        }
+        //var_dump($image);
+        return $image;
+    }
 }
