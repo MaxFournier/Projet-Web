@@ -6,11 +6,31 @@ class Avancement extends Controller{
         self::query("SELECT * FROM series");
     }
 
-    public static function getAvancementById ($idSerie, $idUser){
+    public static function getLastSeen ($idSerie, $idUser){
         $variables = array ($idSerie, $idUser);
         $identifiants = array(":ids",":idu");
 
         $data = self::query("SELECT * FROM avancement WHERE id_serie = :ids and id_user = :idu"
+        , $variables);
+
+        return $data;
+    }
+
+    public static function getFavorites ($idUser){
+        $variables = array ($idUser);
+        $identifiants = array(":idu");
+
+        $data = self::query("SELECT id_serie FROM avancement WHERE id_user = :idu and favoris = 1" 
+        , $variables);
+
+        return $data;
+    }
+
+    public static function getSeenSerie ($idUser){
+        $variables = array ($idUser);
+        $identifiants = array(":idu");
+
+        $data = self::query("SELECT id_serie FROM avancement WHERE id_user = :idu " 
         , $variables);
 
         return $data;
@@ -26,7 +46,7 @@ class Avancement extends Controller{
 
     }
 
-    public static function updateSerieFavoris ($idSerie, $idUser, $favoris){
+    public static function updateFavorite ($idSerie, $idUser, $favoris){
         if($favoris!=0  && $favoris!=1 ){
             //erreur
         }
@@ -40,7 +60,7 @@ class Avancement extends Controller{
         }
     }
 
-    public static function updateAvancement ($idSerie, $idUser, $favoris, $idLastEpisode){
+    public static function updateLastSeen ($idSerie, $idUser, $favoris, $idLastEpisode){
         if($favoris!=0  && $favoris!=1 ){
             //erreur
         }
@@ -53,5 +73,6 @@ class Avancement extends Controller{
 
         }
     }
+
 
 }

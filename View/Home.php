@@ -9,10 +9,15 @@
 </head>
 
 <body>
+    
     <h1>suivserie</h1>
     <article class="Séries">
-        <a id="connexion" href="index2.html">Connexion</a>
+        <a id="connexion" href="connexion">Connexion</a>
         <h2>Séries à la une</h2>
+        <?php
+        echo"home";
+        var_dump($_POST);
+        ?>
         <div class="wrapper">
 
             <div class="rectangle" id="affiche1"></div>
@@ -25,11 +30,6 @@
 
 
         </div>
-
-
-
-
-
 
 </body>
 

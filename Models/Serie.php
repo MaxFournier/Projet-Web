@@ -27,6 +27,7 @@ class Serie extends Controller{
     }
 
     public static function getSerieById($id){
+        echo "hello";
         $sql = "SELECT * FROM series WHERE id= :id";
         
         $variables = array($id);
@@ -34,7 +35,7 @@ class Serie extends Controller{
         $identifiants = array(":id");
 
         $data = self::query($sql, $variables, $identifiants);
-
+        echo'there';
         return $data;
     }
 

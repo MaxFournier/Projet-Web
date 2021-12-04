@@ -32,11 +32,11 @@ class User extends Controller{
         
         if ($data[0] != null && $data[0]['identifiant'] == $username 
         && $data[0]['password'] == $password){
-            var_dump($data[0]);
+            //var_dump($data[0]);
             return $data[0] ;//connexion ok
         }
         else{
-            var_dump($data);
+            //var_dump($data);
             return null;//connexion failed
         }
     }
