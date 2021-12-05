@@ -5,18 +5,23 @@
     <meta charset="UTF-8">
     <link rel="icon" href="" />
     <title>Serie suivie</title>
-    <link href="View/styles/style.css" rel="stylesheet" type="text/css">
+    <style>
+        <?php
+            include "styles/style.css" ;
+        ?>
+    </style>
+    <link href="styles/style.css" rel="stylesheet" type="text/css">
 </head>
 
 <body>
     
-    <h1>suivserie</h1>
+    <h1>HOME</h1>
     <article class="Séries">
-        <a id="connexion" href="connexion">Connexion</a>
+        <a id="connexion" href="Connexion">Connexion</a>
         <h2>Séries à la une</h2>
         <?php
         echo"home";
-        var_dump($_POST);
+        var_dump($_POST['home_serie']);
         ?>
         <div class="wrapper">
 
