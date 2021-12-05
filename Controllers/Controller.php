@@ -15,7 +15,7 @@ Class Controller extends BDD {
     public static function CreateView404($viewName){
         
         if (!file_exists('View/'.$viewName.'.php')){
-            echo "here";
+            
             include 'View/404.php';
         }
     }

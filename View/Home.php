@@ -20,21 +20,26 @@
         <a id="connexion" href="Connexion">Connexion</a>
         <h2>Séries à la une</h2>
         <?php
-        echo"home";
-        var_dump($_POST['home_serie']);
+        $series = $_POST['home_serie'];
+
         ?>
         <div class="wrapper">
-
-            <div class="rectangle" id="affiche1"></div>
-            <div class="rectangle" id="affiche1"></div>
-            <div class="rectangle" id="affiche1"></div>
+            <?php
+                foreach($series as $element){
+            ?>
+            <div class="rectangle" id="affiche1">
+                <?php
+                    echo ' <h2>'.$element['titre'].' </h2>';
+                    echo ' <img src="'.$element['poster'].'"/> ';
+                  
+                ?>
+            </div>
+            <?php
+                }
+            ?>
+            
         </div>
-        <div class="wrapper2">
-
-            <div class="rectangle2" id="texteaffiche"></div>
-
-
-        </div>
+       
 
 </body>
 
