@@ -63,12 +63,12 @@ class Episode extends Controller{
     }
 
     public static function getEpisodesBySerieId ($idSerie){
-
+        
         $variables = array($idSerie);
         $identifiants = array(":id");
 
         $data = self::query("SELECT * FROM episodes WHERE id_serie= :id", $variables ,$identifiants);
-
+        
         return $data;
     }
 }

@@ -1,14 +1,20 @@
 <html>
     <head>
+    <title>Connexion</title>
        <meta charset="utf-8">
         <!-- importer le fichier de style -->
+        <style>
+        <?php
+            include "styles/style2.css" ;
+        ?>
+    </style>
         <link rel="stylesheet" href="styles/style2.css" media="screen" type="text/css" />
     </head>
     <body>
         <div id="container">
             <!-- zone de connexion -->
             
-            <form action="connexion" method="POST">
+            <form action="Connexion" method="POST">
                 <h1>Connexion</h1>
                 
                 <label><b>Nom d'utilisateur</b></label>

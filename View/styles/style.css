@@ -1,5 +1,5 @@
     body {
-        background: #005675;
+        background: #e5e5e6;
         margin: 0;
         padding: 0;
     }
@@ -65,18 +65,15 @@
     }
 
     .rectangle {
+        color : white;
         width: 300px;
         height: 500px;
-        background: green;
+        background: rgb(56, 56, 56);
+        text-align: center;
     }
 
-    .rectangle2 {
-        width: 1000px;
-        height: 150px;
-        background: green;
-    }
 
-    #affiche1 {
+    .affiche1 {
         position: relative;
         top: 20px;
         left: 20px;
