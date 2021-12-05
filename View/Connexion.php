@@ -1,5 +1,6 @@
 <html>
     <head>
+    <title>Connexion</title>
        <meta charset="utf-8">
         <!-- importer le fichier de style -->
         <style>

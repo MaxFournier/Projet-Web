@@ -13,7 +13,7 @@ class Avancement extends Controller{
         $data = self::query("SELECT * FROM avancement WHERE id_serie = :ids and id_user = :idu"
         , $variables, $identifiants);
 
-        return $data;
+        return $data[0];
     }
 
     public static function getFavorites ($idUser){

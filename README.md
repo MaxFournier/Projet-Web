@@ -1,5 +1,5 @@
 # Projet-Web
-
+#### Max Fournier et Anthony Chomette
 ## Config a realiser
 Normalement l'application marche telle quel, en cas de probleme avec la base verifiez si le fichier "database.db" est bien present a la racine et que son chemin est bien indiqué dans le fichier "config.php". 
 En cas de probleme avec le fichier database.db, executez les scripts sql comptenu dans le ficher "sqliteDatabase.sql" avec sqlite3 pour en creer un autre et placez le a la racine.
@@ -27,7 +27,7 @@ Permet d'acceder a l'écran de connexion ainsi que de voir 3 series du moment.
 - Serie::getFirstSerie
 - Serie::getSeriePoster
 
-#### Naviguer
+#### List Series
 Permet de voir toute les series du site sont indiquée celle que l'utilisateur connecté a deja vu ainsi que ses favorites.
 
 *fonctions utilisées* :
@@ -46,7 +46,7 @@ Avancement::getLastSeen
 avancement::isFavorite
 avancement::updateFavorite
 
-#### Choisir dernier episode vu 
+#### Avancement
 Permet de selectionner parmis les episodes le dernier vu
 
 *fonctions utilisées :*
@@ -58,11 +58,12 @@ Avancement::updateLastSeen
 - ajout du role admin
 - fonction d'ajout et de modification de series/episodes
 - recuperation de plus d'info par l'api (rating, date de sortie,...)
-- rajouter plsu de securité
-- brider l'acces aux differentes pagess
+- rajouter plus de securité
 
 
 ## Difficultées rencontrées
+J'ai modifié ce qu'il m'a fournis pour le rendre un plus fonctionnel et rajouté d'autres pages mais par manque de temps je n'ai pas pu m'attarder sur la partie estetique. 
+
 Au niveau du backend je n'avais jamais utilisé de routing avant ce projet et jamais executé de requete avec sqlite, plusieurs problemes ont émérgés de la. 
 
 LE routing a été mis en place bien après le debut du projet, un choix par très malin en retrospective et qui a necessité la modification de l'entièreté du projet plusieurs fois.
@@ -73,16 +74,27 @@ Au final, j'ai du repasser sur toute les requetes pour ajouter un identifiant po
 
 Ainsi, malgrès les modifications effectuées seul les fonction de type Get/Select/Read sont réalisable.
 
+De plus, la repartition du travail a été plutot desequilibré puisque les pages créees par anthony (voir view/anthony) sont arrivée trop tard ou n'etait pas utilisable sans beaucoup de modification ce qui explique l'aspect esthetique de certaine pages.
+
 
 ## Etat du projet
-### Max 
 Au niveau du back, le routing fonctionne ainsi que les fonctions Select et l'acces a l'api. Les fonction update, insert et delete ne fonctionne pas au moment de leur execution pour des raison inconnue jusqu'a présent(probablement un probleme de droit).
 
+J'ai essayer de metre en place un routing acceptant deux parametres mais je n'ai pas reussi a la faire fonctionner. 
+
+Je n'ai pas reussi non plus a stocké les information de l'utilisateur connecter en session et donc les redirections qui devait avoir lieu en fonction de si un utilisateur connécte ou non ont été abandonnées  et l'id d'utilisateur qui devait etre recupere depuis la session a été saisie en dur pour illustere les fonctions.
+
+Une page pour les erreur 404 existe.
 
 
 ## Notes suplementaires
+
 mot de passe pour la connexion :
 - identifiant : admin
 - mot de passe : admin
 
 Sqllite ne supportant pas les boolean, ceux ci ont été remplacé par des integer ou 0 = false et 1 = true
+
+la page par defaut est la page Home (Projet-web/Home), je n'ai pas reussi a en faire la page principale mais c'est censé etre la page d'accueil.
+
+l'api utilisée est celle du site https://api.tvmaze.com 

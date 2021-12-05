@@ -82,6 +82,23 @@ Route::set('List-series', function(){
 Route::set('Serie-info', function(){
     // if (isset($_SESSION['id']) && isset($_SESSION['username']))
     // {
+        //var_dump($_GET);
+        if (isset($_GET['serie'])){
+           
+            $data = Serie::getSerieById($_GET['serie']);
+            $data['poster'] = Serie::getSeriePoster($data['titre']);
+            //var_dump($data);
+            $data['episodes'] = Episode::getEpisodesBySerieId ($_GET['serie']);
+            //var_dump($data);
+            $last = Avancement::getLastSeen($_GET['serie'],1);
+            //var_dump($last);
+            $data['id_last_episode']= $last['id_last_episode'];
+            $data['favorite'] = $last['favoris'];
+            //var_dump($data);
+
+            $_POST['serie-info'] = $data;
+            //avancement::updateFavorite
+        }
         
 
         Page::CreateView('Serie-info');
@@ -94,6 +111,14 @@ Route::set('Serie-info', function(){
 Route::set('Avancement', function(){
     // if (isset($_SESSION['id']) && isset($_SESSION['username']))
     // {
+        if (isset($_GET['serie'])){
+            $data = Serie::getSerieById($_GET['serie']);
+            $data['episodes'] = Episode::getEpisodesBySerieId ($_GET['serie']);
+            $last = Avancement::getLastSeen($_GET['serie'],1);
+            //var_dump($last);
+            $data['id_last_episode']= $last['id_last_episode'];
+            var_dump($data);
+        }
         Page::CreateView('Avancement');
     // }
     // else{

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+  <title>Liste</title>
     <style>
     table {
       font-family: arial, sans-serif;
