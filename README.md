@@ -62,39 +62,44 @@ Avancement::updateLastSeen
 
 
 ## Difficultées rencontrées
-J'ai modifié ce qu'il m'a fournis pour le rendre un plus fonctionnel et rajouté d'autres pages mais par manque de temps je n'ai pas pu m'attarder sur la partie estetique. 
 
 Au niveau du backend je n'avais jamais utilisé de routing avant ce projet et jamais executé de requete avec sqlite, plusieurs problemes ont émérgés de la. 
 
-LE routing a été mis en place bien après le debut du projet, un choix par très malin en retrospective et qui a necessité la modification de l'entièreté du projet plusieurs fois.
+Le routing a été mis en place bien après le debut du projet, un choix  qui a necessité la modification de l'entièreté du projet plusieurs fois.
 
-Le choix de n'avoir qu'une seule fonction qui accede a la base a presenté plusieurs problemes a cause de l'incorporation de variable dans la requete qui à été difficile a mettre en place. 
+Le choix de n'avoir qu'une seule fonction qui accede a la base a presenté plusieurs problemes a cause de l'incorporation de variable dans la requete qui à été difficile a mettre en place. En effet sqlite etant deja assez peut securisé l'utilisation de bind_param() pour eviter les faille sql etait necessaire.
 
-Au final, j'ai du repasser sur toute les requetes pour ajouter un identifiant pour chaque variable et pour créer un tableau contenant ces identifiant ce qui a pris beaucoup de temps. 
+Au final, j'ai du repasser sur toute les requetes pour ajouter un identifiant pour chaque variable et pour créer un tableau contenant ces identifiant ce qui a pris beaucoup de temps. Pour une raison iconnue seule les fonction de type get/read fonctionnent. les autres (update, insert et delete) ne se lancent pas aux moment de l'execution.
 
-Ainsi, malgrès les modifications effectuées seul les fonction de type Get/Select/Read sont réalisable.
+La page 404 fonctionne en verifiant si un fichier 'nom de la route saisie'.php existe et en affichant l'erreur 404 dans le cas contraire plutot qu'en utilisant vraiment les erreurs et le .htaccess
 
-De plus, la repartition du travail a été plutot desequilibré puisque les pages créees par anthony (voir view/anthony) sont arrivée trop tard ou n'etait pas utilisable sans beaucoup de modification ce qui explique l'aspect esthetique de certaine pages.
+L'aspect esthetique de certaine page s'explique par le fait que les pages créees par anthony (voir view/anthony) sont arrivée trop tard ou n'etait pas utilisable sans beaucoup de modification ce qui m'a forcé a faire des modification rapide ou a créer mem porpore page sur lesquelle je n'ai pas eu de temps de faire quelque chose de joli. Sur les pages ou je n'ai pas eu le temps de modifier ce qu'a fait Anthony ou le temps d'implementer un tableau, un vardump a été mis en place pour illustrer les données qui sont utilisées ou qui sont censées apparaitres
+
+e n'ai pas reussi non plus a stocké les information de l'utilisateur connecter en session et donc les redirections qui devait avoir lieu en fonction de si un utilisateur connécte ou non ont été abandonnées  et l'id d'utilisateur qui devait etre recupere depuis la session a été saisie en dur pour illustrer les fonctions.
+
+J'ai essayer de metre en place un routing acceptant deux parametres (exemple : Projet-Web/serie-info/3) mais je n'ai pas reussi a la faire fonctionner et le deuxieme parametre est devenu un attribut GET (Projet-Web/serie-info?serie=3).
 
 
-## Etat du projet
-Au niveau du back, le routing fonctionne ainsi que les fonctions Select et l'acces a l'api. Les fonction update, insert et delete ne fonctionne pas au moment de leur execution pour des raison inconnue jusqu'a présent(probablement un probleme de droit).
+## Rajouter depuis la derniere fois
+Au niveau du back, le routing fonctionne ainsi que les fonctions Select et l'acces a l'api. 
 
-J'ai essayer de metre en place un routing acceptant deux parametres mais je n'ai pas reussi a la faire fonctionner. 
+Une page pour les erreur 404 a été ajoutée ainsi que les redirection vers cette page.
 
-Je n'ai pas reussi non plus a stocké les information de l'utilisateur connecter en session et donc les redirections qui devait avoir lieu en fonction de si un utilisateur connécte ou non ont été abandonnées  et l'id d'utilisateur qui devait etre recupere depuis la session a été saisie en dur pour illustere les fonctions.
+les pages ont été liée au back.
 
-Une page pour les erreur 404 existe.
+les page serie-list, serie-info et avancement on été rajoutée.
+
+Quelques fonction manquantes ont aussi été ajoutées.
 
 
 ## Notes suplementaires
 
-mot de passe pour la connexion :
+Mot de passe pour la connexion :
 - identifiant : admin
 - mot de passe : admin
 
 Sqllite ne supportant pas les boolean, ceux ci ont été remplacé par des integer ou 0 = false et 1 = true
 
-la page par defaut est la page Home (Projet-web/Home), je n'ai pas reussi a en faire la page principale mais c'est censé etre la page d'accueil.
+la page par defaut est la page Home (Projet-web/Home), je n'ai pas reussi a en faire la page principale mais c'est censé etre la page d'accueil vers laquelle on est redirigée au lancement du projet.
 
 l'api utilisée est celle du site https://api.tvmaze.com 
