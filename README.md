@@ -73,11 +73,16 @@ Au final, j'ai du repasser sur toute les requetes pour ajouter un identifiant po
 
 Ainsi, malgrès les modifications effectuées seul les fonction de type Get/Select/Read sont réalisable.
 
+Au niveau du front, étant mon premier projet web ,j'ai énormement découvert sur certaine fonction.
+Cela m'a prit beaucoup de temps. 
+
+Je n'ai pas réussi à mettre en place sur une case affiche l'acces à une prochaine page sans comprendre pourquoi.
 
 ## Etat du projet
 ### Max 
 Au niveau du back, le routing fonctionne ainsi que les fonctions Select et l'acces a l'api. Les fonction update, insert et delete ne fonctionne pas au moment de leur execution pour des raison inconnue jusqu'a présent(probablement un probleme de droit).
-
+### Anthony
+Au niveau du front, il faut mettre en place l'api sur les rectangle prévu. On peut améliorer l'aspect visuel. Il faut aussi mettre en place l'api pour les information tierce tel que le nom, l'affiche, le nombre d'épisode et la description.
 
 
 ## Notes suplementaires
